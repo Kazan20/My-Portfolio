@@ -100,12 +100,15 @@ export default function Portfolio() {
             {showSnake && (
                 <div className="mt-8">
                     <h2 className="text-2xl font-semibold mb-2">🎮 Play Snake!</h2>
-                    <iframe
-                        src="https://playsnake.org/embed"
-                        className="w-full h-96 border-2 border-gray-700 rounded-lg"
-                        title="Snake Game"
-                        allowFullScreen
-                    />
+                    <a 
+  href="https://playsnake.org" 
+  target="_blank" 
+  rel="noopener noreferrer" 
+  className="mt-8 inline-block px-6 py-3 bg-green-600 text-white font-semibold rounded hover:bg-green-700"
+>
+  Play Snake Game 🐍 or not?
+</a>
+
                 </div>
             )}
 
