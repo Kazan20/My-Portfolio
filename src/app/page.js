@@ -1,103 +1,87 @@
-import Image from "next/image";
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
-export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+const projects = [
+    { name: "ZYN-lw", description: "A Linux distro using the Zyn language." },
+    { name: "nixfetch", description: "A system information tool similar to neofetch." },
+    { name: "KAOL", description: "A custom archive format." },
+    { name: "KZEV", description: "An encryption format based on SHA-512 with Base64." },
+    { name: "C::Void", description: "A programming language mixing C, Rust, and Zig." },
+    { name: "KNML", description: "A structured markup language inspired by JSON, YAML, and TOML." },
+    { name: "ZVM", description: "A virtual machine manager with GUI support." },
+    { name: "KA3D", description: "A 3D graphics renderer." },
+    { name: "Dream League", description: "A Python-based game." },
+    { name: "Stackerd-math", description: "A stack-based shell with scripting support." },
+    { name: "Zynx-link", description: "A chatbot AI in Python." },
+    { name: "CodeZynx", description: "A coding AI model for Python development." },
+    { name: "Marx 2.0", description: "A web crawler with structured data storage." },
+    { name: "Kixd", description: "A Nix-based programming language." },
+    { name: "CVON", description: "A structured data format inspired by ZON, JSON, and TOML." },
+    { name: "A stacked window manager", description: "Inspired by GlazeWM, implemented in Python." },
+    { name: "A 3D maze game", description: "Featuring raycasting techniques." },
+    { name: "An anime series", description: "Inspired by JoJo's Bizarre Adventure." }
+];
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+export default function Portfolio() {
+    const [selectedProject, setSelectedProject] = useState(null);
+    const [darkMode, setDarkMode] = useState(false);
+
+    return (
+        <div className={`container mx-auto p-8 ${darkMode ? 'bg-gray-900 text-white' : 'bg-gray-100 text-black'}`}>
+            <button 
+                className="absolute top-4 right-4 px-4 py-2 bg-gray-800 text-white rounded hover:bg-gray-600" 
+                onClick={() => setDarkMode(!darkMode)}>
+                Toggle Dark Mode
+            </button>
+            
+            <h1 className="text-3xl font-bold text-center mb-6">My Portfolio</h1>
+            <h2 className="text-2xl font-semibold">About Me</h2>
+            <p className="mb-4">I'm an enthusiastic developer passionate about creating software, AI models, and game development.</p>
+            
+            <h2 className="text-2xl font-semibold">Projects</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {projects.map((project, index) => (
+                    <motion.div 
+                        key={index} 
+                        className="p-4 bg-white shadow-md rounded-lg dark:bg-gray-800"
+                        whileHover={{ scale: 1.05 }}>
+                        <h3 className="text-xl font-bold">{project.name}</h3>
+                        <button 
+                            className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700 mt-2" 
+                            onClick={() => setSelectedProject(project)}>
+                            View Project
+                        </button>
+                    </motion.div>
+                ))}
+            </div>
+            
+            <AnimatePresence>
+                {selectedProject && (
+                    <motion.div 
+                        className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        onClick={() => setSelectedProject(null)}>
+                        <motion.div 
+                            className="p-6 bg-white dark:bg-gray-900 text-black dark:text-white rounded-lg shadow-lg"
+                            initial={{ scale: 0.8 }}
+                            animate={{ scale: 1 }}
+                            exit={{ scale: 0.8 }}>
+                            <h3 className="text-2xl font-bold mb-2">{selectedProject.name}</h3>
+                            <p>{selectedProject.description}</p>
+                            <button 
+                                className="mt-4 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-700" 
+                                onClick={() => setSelectedProject(null)}>
+                                Close
+                            </button>
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+            
+            <h2 className="text-2xl font-semibold mt-6">Contact</h2>
+            <p>Find me on <a href="https://github.com/username" className="text-blue-500">GitHub</a></p>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+    );
 }
