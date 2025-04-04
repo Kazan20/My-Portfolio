@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const projects = [
@@ -26,6 +26,22 @@ const projects = [
 export default function Portfolio() {
     const [selectedProject, setSelectedProject] = useState(null);
     const [darkMode, setDarkMode] = useState(false);
+    const [viewedProjects, setViewedProjects] = useState([]);
+    const [showSnake, setShowSnake] = useState(false);
+
+    useEffect(() => {
+        if (viewedProjects.length === projects.length) {
+            const timer = setTimeout(() => setShowSnake(true), 1000);
+            return () => clearTimeout(timer);
+        }
+    }, [viewedProjects]);
+
+    const handleViewProject = (project) => {
+        setSelectedProject(project);
+        if (!viewedProjects.includes(project.name)) {
+            setViewedProjects([...viewedProjects, project.name]);
+        }
+    };
 
     return (
         <div className={`container mx-auto p-8 ${darkMode ? 'bg-gray-900 text-white' : 'bg-gray-100 text-black'}`}>
@@ -49,7 +65,7 @@ export default function Portfolio() {
                         <h3 className="text-xl font-bold">{project.name}</h3>
                         <button 
                             className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700 mt-2" 
-                            onClick={() => setSelectedProject(project)}>
+                            onClick={() => handleViewProject(project)}>
                             View Project
                         </button>
                     </motion.div>
@@ -80,9 +96,21 @@ export default function Portfolio() {
                     </motion.div>
                 )}
             </AnimatePresence>
-            
+
+            {showSnake && (
+                <div className="mt-8">
+                    <h2 className="text-2xl font-semibold mb-2">🎮 Play Snake!</h2>
+                    <iframe
+                        src="https://playsnake.org/embed"
+                        className="w-full h-96 border-2 border-gray-700 rounded-lg"
+                        title="Snake Game"
+                        allowFullScreen
+                    />
+                </div>
+            )}
+
             <h2 className="text-2xl font-semibold mt-6">Contact</h2>
-            <p>Find me on <a href="https://github.com/username" className="text-blue-500">GitHub</a></p>
+            <p>Find me on <a href="https://github.com/Kazan20" className="text-blue-500">GitHub</a></p>
         </div>
     );
 }
