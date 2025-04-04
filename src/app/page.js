@@ -35,9 +35,9 @@ export default function Portfolio() {
                 Toggle Dark Mode
             </button>
             
-            <h1 className="text-3xl font-bold text-center mb-6">My Portfolio</h1>
-            <h2 className="text-2xl font-semibold">About Me</h2>
-            <p className="mb-4">I'm an enthusiastic developer passionate about creating software, AI models, and game development.</p>
+            <h1 className="text-3xl font-bold text-center mb-6">Ariels Porfolio</h1>
+            <h2 className="text-2xl font-semibold">About Me!!! and only me :)</h2>
+            <p className="mb-4">I'm Ariel Zvinowanda a lazy developer passionate about creating software, AI models, and game development.</p>
             
             <h2 className="text-2xl font-semibold">Projects</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
