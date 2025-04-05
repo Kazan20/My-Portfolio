@@ -114,6 +114,7 @@ export default function Portfolio() {
 
             <h2 className="text-2xl font-semibold mt-6">Contact</h2>
             <p>Find me on <a href="https://github.com/Kazan20" className="text-blue-500">GitHub</a></p>
+            <p>Or view my Youtube! <a href="https://youtube.com/@kama-inc" className="text-red-500"</a></p>
         </div>
     );
 }
