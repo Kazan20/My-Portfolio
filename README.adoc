@@ -1,0 +1,35 @@
+= My-Portfolio
+
+== Overview
+This project is a personal portfolio website built using JavaScript and CSS. It showcases various projects and skills, providing an online presence for potential employers and collaborators to view.
+
+== Features
+* Responsive design
+* Project showcase
+* Contact form
+
+== Getting Started
+1. **Fork the repository**: Click on the 'Fork' button at the top right of this page to create a copy of this repository in your GitHub account.
+2. **Clone the repository**: Use `git clone https://github.com/YOUR-USERNAME/My-Portfolio.git` to clone the repository to your local machine.
+3. **Navigate to the project directory**: `cd My-Portfolio`
+4. **Open the project**: Open the project in your preferred code editor.
+
+== Prerequisites
+* A modern web browser
+* Basic knowledge of HTML, CSS, and JavaScript
+
+== Installation
+1. Open the `index.html` file in your web browser to view the portfolio.
+2. Customize the content in the `index.html`, `styles.css`, and `main.js` files to fit your personal information and projects.
+
+== Contributing
+If you would like to contribute to this project, please follow these steps:
+1. Fork the repository
+2. Create a new branch (`git checkout -b feature-branch`)
+3. Make your changes
+4. Commit your changes (`git commit -m 'Add some feature'`)
+5. Push to the branch (`git push origin feature-branch`)
+6. Open a pull request
+
+== License
+This project is licensed under the MIT License. See the `LICENSE` file for more details.
