@@ -10,7 +10,7 @@ This project is a personal portfolio website built using JavaScript and CSS. It 
 
 == Getting Started
 1. **Fork the repository**: Click on the 'Fork' button at the top right of this page to create a copy of this repository in your GitHub account.
-2. **Clone the repository**: Use `git clone https://github.com/YOUR-USERNAME/My-Portfolio.git` to clone the repository to your local machine.
+2. **Clone the repository**: Use `git clone https://github.com/Kazan20/My-Portfolio.git` to clone the repository to your local machine.
 3. **Navigate to the project directory**: `cd My-Portfolio`
 4. **Open the project**: Open the project in your preferred code editor.
 
